@@ -1,23 +1,33 @@
-import React from 'react';
-import Button from './Button';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 
-const Card: React.FC = () => {
+interface CardProps {
+    onGetStarted: () => void;
+}
+
+const Card: React.FC<CardProps> = ({ onGetStarted }) => {
+    const [buttonText, setButtonText] = useState<string>("Get Started");
+
+    const handleClick = () => {
+        onGetStarted();
+        setButtonText("Finish Setup");
+    };
+
     return (
         <div className='flex justify-center items-start gap-4 bg-white p-4 shadow-md rounded-md min-w-[780px]'>
             <div>
                 <div>
-                    <h3 className='text-[#14213d] text-xl'>Hello <span className='font-bold'>Willie</span>, </h3>
+                    <h3 className='text-[#14213d] text-xl'>Hello <span className='font-bold'>User</span>,</h3>
                     <p className='text-[#14213d]'>Get the process started in less than 10 minutes. Let us handle the rest.</p>
                 </div>
                 <div className='flex justify-start items-center gap-3 mt-4'>
-                    <Button className='bg-[#14213d] text-white p-1 px-4  rounded-xl' onClick={() => { }}> Get Started </Button>
+                    <button className='bg-[#14213d] text-white p-1 px-4 rounded-xl' onClick={handleClick}>
+                        {buttonText}
+                    </button>
                     <h3 className='text-[#71778e]'>Having Trouble?</h3>
-                    <Link className="text-[#14213d] underline" to="/help">Get help</Link>
+                    <a className="text-[#14213d] underline" href="/help">Get help</a>
                 </div>
             </div>
-            <div>
-                <svg width="111" height="111" viewBox="0 0 111 111" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg width="111" height="111" viewBox="0 0 111 111" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect opacity="0.01" x="0.0300293" y="0.5" width="110" height="110" fill="white" fill-opacity="0.01" />
                     <circle cx="5.43247" cy="97.0183" r="1.72227" fill="#F9A826" />
                     <rect x="29.0657" y="94.123" width="4.53051" height="4.53051" fill="#FF6584" />
@@ -49,10 +59,6 @@ const Card: React.FC = () => {
                     <rect x="30.6202" y="67.1005" width="8.80933" height="1.00678" fill="#F1F1F1" />
                     <ellipse cx="22.4401" cy="46.208" rx="3.77543" ry="2.01356" fill="#3F3D56" />
                 </svg>
-
-            </div>
-
-
         </div>
     );
 };
