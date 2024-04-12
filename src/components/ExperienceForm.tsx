@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import InputField from '../components/InputField';
-import Button from '../components/Button';
+// import Button from '../components/Button';
 
 const ExperienceForm = () => {
 
@@ -10,11 +10,6 @@ const ExperienceForm = () => {
         setInputText(event.target.value);
     };
 
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        console.log('Submitted Text:', inputText);
-        // Here, you can send the inputText to a server or another component as needed
-    };
 
 
     return (
@@ -24,27 +19,27 @@ const ExperienceForm = () => {
                 <form className="rounded px-6 ">
                     <InputField
                         type="text"
-                        id="full name"
-                        placeholder="Saisrikanta"
-                        label="Full Name"
+                        id="Desgination"
+                        placeholder="Desgination"
+                        label="Desgination"
                         onChange={handleChange}
                         value={inputText}
                     />
                     <div className='flex justify-between items-center'>
                     <InputField
                         type="text"
-                        id="secondary email"
-                        placeholder="Enter your secondary email"
-                        label="Secondary Email"
+                        id="Industry"
+                        placeholder="Enter your Industry"
+                        label="Industry"
                         onChange={handleChange}
                         value={inputText}
                         className='w-80'
                     />
                     <InputField
                         type="text"
-                        id="phn"
-                        placeholder="Enter your phone number"
-                        label="Phone Number"
+                        id="Functional Areas"
+                        placeholder="Functional Areas"
+                        label="Functional Areas"
                         onChange={handleChange}
                         value={inputText}
                         className='w-80'

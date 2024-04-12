@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import InputField from '../components/InputField';
-import Button from '../components/Button';
+// import Button from '../components/Button';
 
 const ProfileForm = () => {
 
@@ -10,11 +10,6 @@ const ProfileForm = () => {
         setInputText(event.target.value);
     };
 
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        console.log('Submitted Text:', inputText);
-        // Here, you can send the inputText to a server or another component as needed
-    };
 
 
     return (

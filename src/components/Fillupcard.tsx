@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileForm from './ProfileForm';
+// import ProfileForm from './ProfileForm';
 import Button from './Button';
 
 interface FillupcardProps {
@@ -34,10 +34,10 @@ const Fillupcard: React.FC<FillupcardProps> = ({ title, description, formContent
         }
     };
     return (
-        <div className={`flex ${isActive ? 'flex-col' : 'flex-row'} justify-between items-center p-2 bg-white  shadow-md rounded-md min-w-[780px]`}>
+        <div className={`flex ${isActive ? 'flex-col' : 'flex-row'} justify-between items-center p-2 bg-white  shadow-md rounded-md min-w-[780px] overflow-x-hidden`}>
             <div className='flex justify-between items-center min-w-[780px] p-4'>
                 <div>
-                    <h3 className='text-[#71778e]'>{title}</h3>
+                    <h3 className={`flex ${isActive ? 'font-bold text-black' : 'text-[#71778e]'} `}>{title}</h3>
                     <p className='text-[#71778e]'>{description}</p>
                 </div>
                 <div>
