@@ -33,6 +33,7 @@ const ProfileForm = () => {
                     Authorization: `Bearer ${token}`
                 }
             });
+            console.log(response)
             setMessage('Profile updated successfully!');
         } catch (error: any) {
             setMessage(error.response?.data?.error || 'Failed to update profile');

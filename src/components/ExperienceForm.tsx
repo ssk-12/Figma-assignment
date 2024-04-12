@@ -20,6 +20,7 @@ const ExperienceForm = () => {
                     Authorization: `Bearer ${token}`
                 }
             });
+            console.log(response)
             setMessage('Experience updated successfully!');
         } catch (error: any) {
             setMessage(error.response?.data?.error || 'Failed to update experience');
