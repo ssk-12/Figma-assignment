@@ -55,6 +55,26 @@ accessRouter.use('/*', async (c, next) => {
     }
 });
 
+accessRouter.get('/user', async (c) => {
+    const userId = c.get("userId");
+    const prisma = new PrismaClient({
+        datasourceUrl: c.env?.DATABASE_URL,
+    }).$extends(withAccelerate());
+  
+    try {
+      const user = await prisma.user.findUnique({
+        where: { id: userId }
+      });
+  
+      if (user) {
+        return c.json(user);
+      } else {
+        return c.json({ message: 'User not found' }, 404);
+      }
+    } catch (error) {
+      return c.json({ message: 'Failed to fetch user'}, 500);
+    }
+  });
 
 accessRouter.post('/update-profile', async (c) => {
 

@@ -20,6 +20,7 @@ const Card: React.FC<CardProps> = ({ onGetStarted }) => {
             onGetStarted();
             setButtonText("Finish Setup");
         } else {
+            navigate("/details")
             setButtonText("Get Started");
         }
     };

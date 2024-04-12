@@ -4,6 +4,7 @@ import { Dashboard } from './pages/Dashboard';
 import { Appbar } from './components/Navbar';
 import SignIn from './pages/Sign-in';
 import Footer from './components/Footer';
+import UserDetail from './pages/Details';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<SignIn />} />
             <Route path="/onboard" element={<Dashboard />} />
+            <Route path="/details" element={<UserDetail />} />
           </Routes>
         </main>
 
