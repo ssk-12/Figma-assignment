@@ -41,7 +41,7 @@ const ProfileForm = () => {
 
     return (
         <div className="flex flex-col items-center justify-center flex-grow gap-2 overflow-x-hidden">
-            <div className="w-full min-w-[780px]">
+            <div className="w-full md:min-w-[780px] sm:flex-wrap">
                 <form className="rounded px-6" onSubmit={handleUpdateProfile}>
                     <InputField
                         type="text"
@@ -51,7 +51,7 @@ const ProfileForm = () => {
                         onChange={handleFullNameChange}
                         value={fullName}
                     />
-                    <div className='flex justify-between items-center'>
+                    <div className='flex-1 md:flex justify-between items-center'>
                         <InputField
                             type="text"
                             id="secondaryEmail"
@@ -71,7 +71,7 @@ const ProfileForm = () => {
                             className='w-80'
                         />
                     </div>
-                    <button type="submit" className="mt-4 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">Update Profile</button>
+                    <button type="submit" className="bmt-4 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">Update Profile</button>
                     {message && (
                         <p className="mt-4 text-center text-lg">{message}</p>
                     )}

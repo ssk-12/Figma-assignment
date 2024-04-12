@@ -57,6 +57,7 @@ const ExperienceForm = () => {
                             value={functionalAreas}
                             className='w-80'
                         />
+                        
                     </div>
                     <button type="submit" className="mt-4 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">Update Experience</button>
                     {message && (

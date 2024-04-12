@@ -1,10 +1,10 @@
 import React from 'react';
 
 type ButtonProps = {
-  onClick?: () => void;  // Make onClick optional
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;  
   className?: string;
   children: React.ReactNode;
-  type?: 'button' | 'submit' | 'reset';  // More specific type for button types
+  type?: 'button' | 'submit' | 'reset'; 
 };
 
 const Button: React.FC<ButtonProps> = ({ onClick, className, children, type = 'button' }) => {

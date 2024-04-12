@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 type SignInResponse = {
     jwt?: string;
     error?: string;
+    username?: string
 };
 
 const isValidEmail = (email: string): boolean => /\S+@\S+\.\S+/.test(email);
@@ -21,8 +22,10 @@ const SignIn: React.FC = () => {
         e.preventDefault();
         try {
             const response = await axios.post<SignInResponse>('https://be.ullegadda-ssk.workers.dev/api/v1/user/signin', { email, password });
+            
             if (response.data.jwt) {
                 localStorage.setItem('token', response.data.jwt);
+                localStorage.setItem('username',response.data.username || " ")
                 navigate("/onboard");
             } else if (response.data.error) {
                 alert('Sign-in failed: ' + response.data.error);
@@ -63,7 +66,7 @@ const SignIn: React.FC = () => {
                             className="border-2 rounded-md"
                             value={password}
                             icon={
-                                // Icon for showing/hiding password
+                                
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? (
                                         <path d="M1 12C1 12 5 20 12 20C19 20 23 12 23 12C23 12 19 4 12 4C5 4 1 12 1 12ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#6b7280" />

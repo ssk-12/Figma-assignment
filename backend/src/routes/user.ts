@@ -12,7 +12,6 @@ export const userRouter = new Hono<{
 }>();
 
 userRouter.post('/signin', async (c) => {
-    console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii")
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
@@ -48,5 +47,9 @@ userRouter.post('/signin', async (c) => {
     }
 
     const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-    return c.json({ jwt });
+    return c.json({
+        jwt,
+        userid:user.id,
+        username: user.email
+    });
 });

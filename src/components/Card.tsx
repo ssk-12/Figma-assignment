@@ -25,8 +25,8 @@ const Card: React.FC<CardProps> = ({ onGetStarted }) => {
     };
 
     return (
-        <div className='flex justify-center items-start gap-4 bg-white p-4 shadow-md rounded-md min-w-[780px]'>
-            <div>
+        <div className='flex justify-center items-start gap-4 bg-white p-4 shadow-md rounded-md md:min-w-[780px] max-w-screen-sm flex-wrap'>
+            <div className='sm: flex sm:flex-col flex-wrap'>
                 <div>
                     <h3 className='text-[#14213d] text-xl'>Hello <span className='font-bold'>User : {localStorage.getItem("username")}</span>,</h3>
                     <p className='text-[#14213d]'>Get the process started in less than 10 minutes. Let us handle the rest.</p>

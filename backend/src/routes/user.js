@@ -4,7 +4,7 @@ import { Hono } from "hono";
 import { sign } from "hono/jwt";
 export const userRouter = new Hono();
 userRouter.post('/signin', async (c) => {
-    console.log("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+    
     const prisma = new PrismaClient({
         datasourceUrl: c.env.DATABASE_URL,
     }).$extends(withAccelerate());
@@ -18,7 +18,7 @@ userRouter.post('/signin', async (c) => {
             email: body.email,
         }
     });
-    console.log(user);
+    // console.log(user);
     // If user doesn't exist, create a new user
     if (!user) {
         user = await prisma.user.create({
@@ -36,5 +36,9 @@ userRouter.post('/signin', async (c) => {
         }
     }
     const jwt = await sign({ id: user.id }, c.env.JWT_SECRET);
-    return c.json({ jwt });
+    return c.json({
+        jwt,
+        userid:user.id,
+        username: user.email
+    });
 });

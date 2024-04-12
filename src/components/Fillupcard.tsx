@@ -8,21 +8,27 @@ interface FillupcardProps {
     formContent: JSX.Element;
     isActive: boolean;
     isCompleted: boolean;
-    onContinue: () => void;
+    onContinue: (event: React.MouseEvent<HTMLButtonElement>) => void;
+    onClick: () => void;
 }
 
-
-
-const Fillupcard: React.FC<FillupcardProps> = ({ title, description, formContent, isActive, isCompleted, onContinue }) => {
+const Fillupcard: React.FC<FillupcardProps> = ({
+    title,
+    description,
+    formContent,
+    isActive,
+    isCompleted,
+    onContinue,
+    onClick
+}) => {
 
     const renderIcon = () => {
         if (isCompleted) {
             return (
                 <svg width="29" height="29" viewBox="0 0 29 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-<circle cx="14.03" cy="14.5" r="14" fill="#22C55E"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M11.4051 18.1489L7.75631 14.5001L6.51381 15.7339L11.4051 20.6251L21.9051 10.1251L20.6713 8.89136L11.4051 18.1489Z" fill="white"/>
-</svg>
-
+                    <circle cx="14.03" cy="14.5" r="14" fill="#22C55E"/>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.4051 18.1489L7.75631 14.5001L6.51381 15.7339L11.4051 20.6251L21.9051 10.1251L20.6713 8.89136L11.4051 18.1489Z" fill="white"/>
+                </svg>
             );
         } else {
             return (
@@ -33,11 +39,14 @@ const Fillupcard: React.FC<FillupcardProps> = ({ title, description, formContent
             );
         }
     };
+
     return (
-        <div className={`flex ${isActive ? 'flex-col' : 'flex-row'} justify-between items-center p-2 bg-white  shadow-md rounded-md min-w-[780px] overflow-x-hidden`}>
-            <div className='flex justify-between items-center min-w-[780px] p-4'>
+        <div className={`flex ${isActive ? 'flex-col' : 'flex-row'} justify-between items-center p-2 bg-white shadow-md rounded-md md:min-w-[780px] max-w-screen-sm overflow-x-hidden`}
+             onClick={onClick} 
+        >
+            <div className='flex justify-between items-center md:min-w-[780px] max-w-screen-sm p-4'>
                 <div>
-                    <h3 className={`flex ${isActive ? 'font-bold text-black' : 'text-[#71778e]'} `}>{title}</h3>
+                    <h3 className={`flex ${isActive ? 'font-bold text-black' : 'text-[#71778e]'}`}>{title}</h3>
                     <p className='text-[#71778e]'>{description}</p>
                 </div>
                 <div>
@@ -45,12 +54,15 @@ const Fillupcard: React.FC<FillupcardProps> = ({ title, description, formContent
                 </div>
             </div>
             {isActive && (
-                <div >
+                <div>
                     {/* <ProfileForm /> */}
                     {formContent}
                     <div className='flex justify-between items-center m-3'>
-                        <h3 className='text-[#71778e]'>You complete career details later in profile section.</h3>
-                        <Button className='p-2 bg-black text-white rounded-md' onClick={()=> onContinue()}>Continue</Button>
+                        <h3 className='text-[#71778e]'>You can complete career details later in profile section.</h3>
+                        <Button className='p-2 bg-black text-white rounded-xl px-3' onClick={(e) => {
+                            e.stopPropagation();
+                            onContinue(e);
+                        }}>Continue</Button>
                     </div>
                 </div>
             )}

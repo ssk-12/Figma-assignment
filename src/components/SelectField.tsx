@@ -1,10 +1,10 @@
 import React from 'react';
 
 type SelectFieldProps = {
-  options: { label: string; value: string }[]; // Array of options for the select
+  options: { label: string; value: string }[];
   placeholder?: string;
-  label?: string;  // Optional label text
-  id?: string;  // Optional but recommended for associating label with select
+  label?: string;
+  id?: string;  
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
   value: string;
