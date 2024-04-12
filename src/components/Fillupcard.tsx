@@ -2,6 +2,7 @@ import React from 'react';
 // import ProfileForm from './ProfileForm';
 import Button from './Button';
 
+// interface for the Form cards
 interface FillupcardProps {
     title: string;
     description: string;
@@ -22,6 +23,7 @@ const Fillupcard: React.FC<FillupcardProps> = ({
     onClick
 }) => {
 
+    //function to fetch and render icon based on the status
     const renderIcon = () => {
         if (isCompleted) {
             return (

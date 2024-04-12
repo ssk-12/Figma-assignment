@@ -4,12 +4,14 @@ import InputField from '../components/InputField';
 import Button from '../components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 
+// interface for the server's response upon a sign-in attempt
 type SignInResponse = {
     jwt?: string;
     error?: string;
     username?: string
 };
 
+//helper function for email validation
 const isValidEmail = (email: string): boolean => /\S+@\S+\.\S+/.test(email);
 
 const SignIn: React.FC = () => {
@@ -18,11 +20,12 @@ const SignIn: React.FC = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const navigate = useNavigate();
 
+    // signin submision handler function
     const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
             const response = await axios.post<SignInResponse>('https://be.ullegadda-ssk.workers.dev/api/v1/user/signin', { email, password });
-            
+            //if token is present allow user to visit dashboaed
             if (response.data.jwt) {
                 localStorage.setItem('token', response.data.jwt);
                 localStorage.setItem('username',response.data.username || " ")

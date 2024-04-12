@@ -9,7 +9,7 @@ export const Appbar = () => {
     // List of paths where the logout button should not be rendered
     const excludedPaths = ['/'];
 
-    // Check if the current pathname is in the excludedPaths list
+    // Checking if the current pathname is in the excludedPaths list
     const shouldRenderLogout = !excludedPaths.includes(location.pathname);
 
     return (
