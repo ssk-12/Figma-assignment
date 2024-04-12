@@ -1,35 +1,48 @@
-import  { useState } from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import InputField from '../components/InputField';
 import Button from '../components/Button';
 import { Link, useNavigate } from 'react-router-dom';
 
-// Simple email validation function
-const isValidEmail = (email: string) => {
-    return /\S+@\S+\.\S+/.test(email);
+type SignInResponse = {
+    jwt?: string;
+    error?: string;
 };
 
-const SignIn = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+const isValidEmail = (email: string): boolean => /\S+@\S+\.\S+/.test(email);
+
+const SignIn: React.FC = () => {
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     const navigate = useNavigate();
+
+    const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post<SignInResponse>('https://be.ullegadda-ssk.workers.dev/api/v1/user/signin', { email, password });
+            if (response.data.jwt) {
+                localStorage.setItem('token', response.data.jwt);
+                navigate("/onboard");
+            } else if (response.data.error) {
+                alert('Sign-in failed: ' + response.data.error);
+            }
+        } catch (error: any) {
+            alert('An error occurred: ' + error.message);
+        }
+    };
 
     const emailValid = isValidEmail(email);
 
     return (
-
-        <div className="flex flex-col items-center justify-center flex-grow w-screen  p-8 gap-2 overflow-x-hidden">
+        <div className="flex flex-col items-center justify-center flex-grow w-screen p-8 gap-2 overflow-x-hidden">
             <div className="w-full max-w-96">
-                <div className='flex flex-col gap-1 justify-center items-center'>
-                    <p className='text-indigo-950 font-medium text-xl'>Welcome</p>
-                    <p className='text-gray-500 font-sm text-md'>Sign In for Seamless Experiences!</p>
-                </div>
-                <form className="rounded px-6 ">
+                <form onSubmit={handleSignIn} className="rounded px-6 ">
                     <InputField
                         label='Email'
                         id='email'
                         type="email"
-                        placeholder="enter your email id"
+                        placeholder="Enter your email id"
                         onChange={e => setEmail(e.target.value)}
                         className="border-2 rounded-md"
                         value={email}
@@ -45,33 +58,26 @@ const SignIn = () => {
                             label='Password'
                             id='password'
                             type={showPassword ? "text" : "password"}
-                            placeholder="enter your password"
+                            placeholder="Enter your password"
                             onChange={e => setPassword(e.target.value)}
                             className="border-2 rounded-md"
                             value={password}
                             icon={
-                                // Icon switching based on password visibility
-                                showPassword ? (
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
-                                        <path d="M2 2L22 22" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                                        <path d="M6.71277 6.7226C3.66479 8.79527 2 12 2 12C2 12 5.63636 19 12 19C14.0503 19 15.8174 18.2734 17.2711 17.2884M11 5.05822C11.3254 5.02013 11.6588 5 12 5C18.3636 5 22 12 22 12C22 12 21.3082 13.3317 20 14.8335" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                                        <path d="M14 14.2362C13.4692 14.7112 12.7684 15.0001 12 15.0001C10.3431 15.0001 9 13.657 9 12.0001C9 11.1764 9.33193 10.4303 9.86932 9.88818" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                                    </svg>
-                                ) : (
-                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
-                                        <path d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                                        <path d="M1 12C1 12 5 20 12 20C19 20 23 12 23 12" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
-                                        <circle cx="12" cy="12" r="3" stroke="#6b7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></circle>
-                                    </svg>
-                                )
+                                // Icon for showing/hiding password
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
+                                    {showPassword ? (
+                                        <path d="M1 12C1 12 5 20 12 20C19 20 23 12 23 12C23 12 19 4 12 4C5 4 1 12 1 12ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#6b7280" />
+                                    ) : (
+                                        <path d="M12 5C5.63636 5 2 12 2 12C2 12 5.63636 19 12 19C18.3636 19 22 12 22 12C22 12 18.3636 5 12 5ZM12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12C16 14.2091 14.2091 16 12 16Z" fill="#6b7280" />
+                                    )}
+                                </svg>
                             }
                         />
                     </div>
-                    <Button onClick={() => navigate("/onboard")} className="  bg-[#e5e7eb] hover:bg-slate-700 text-[#71778e] hover:text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+                    <Button type="submit" className="bg-[#e5e7eb] hover:bg-slate-700 text-[#71778e] hover:text-white font-semibold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
                         Sign In
                     </Button>
                 </form>
-                
             </div>
             <Link className='text-[#98a2b3] hover:text-slate-700' to="/reset">Forgot Password?</Link>
         </div>
@@ -79,5 +85,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-
-

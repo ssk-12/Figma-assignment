@@ -1,22 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface CardProps {
     onGetStarted: () => void;
 }
 
 const Card: React.FC<CardProps> = ({ onGetStarted }) => {
-    const [buttonText, setButtonText] = useState<string>("Get Started");
+    const [buttonText, setButtonText] = useState("Get Started");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (buttonText === "Finish Setup") {
+            navigate('/onboard');
+        }
+    }, [buttonText]);
 
     const handleClick = () => {
-        onGetStarted();
-        setButtonText("Finish Setup");
+        if (buttonText === "Get Started") {
+            onGetStarted();
+            setButtonText("Finish Setup");
+        } else {
+            setButtonText("Get Started");
+        }
     };
 
     return (
         <div className='flex justify-center items-start gap-4 bg-white p-4 shadow-md rounded-md min-w-[780px]'>
             <div>
                 <div>
-                    <h3 className='text-[#14213d] text-xl'>Hello <span className='font-bold'>User</span>,</h3>
+                    <h3 className='text-[#14213d] text-xl'>Hello <span className='font-bold'>User : {localStorage.getItem("username")}</span>,</h3>
                     <p className='text-[#14213d]'>Get the process started in less than 10 minutes. Let us handle the rest.</p>
                 </div>
                 <div className='flex justify-start items-center gap-3 mt-4'>
