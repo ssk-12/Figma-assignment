@@ -20,6 +20,7 @@ export const CalendarForm = () => {
                 }
             });
             alert('Date of birth updated successfully!');
+            console.log(response)
         } catch (error: any) {
             console.error('Error updating date of birth:', error);
             alert('Failed to update date of birth');
