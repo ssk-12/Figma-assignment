@@ -40,6 +40,10 @@ const SignIn: React.FC = () => {
     return (
         <div className="flex flex-col items-center justify-center flex-grow w-screen p-8 gap-2 overflow-x-hidden">
             <div className="w-full max-w-96">
+            <div className='flex flex-col gap-1 justify-center items-center'>
+                    <p className='text-indigo-950 font-medium text-xl'>Welcome</p>
+                    <p className='text-gray-500 font-sm text-md'>Sign In for Seamless Experiences!</p>
+                </div>
                 <form onSubmit={handleSignIn} className="rounded px-6 ">
                     <InputField
                         label='Email'
