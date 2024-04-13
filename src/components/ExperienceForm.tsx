@@ -42,9 +42,9 @@ const ExperienceForm = () => {
 
     return (
         <div className="flex flex-col items-center justify-center flex-grow gap-2 overflow-x-hidden flex-wrap">
-            <div className="w-full min-w-[780px]">
+            <div className="w-full min-w-[780px] flex-wrap">
                 <form className="rounded px-6" onSubmit={handleUpdateExperience}>
-                    <div className='flex justify-between items-center bg-[#f1f3f9] rounded-lg p-3'>
+                    <div className='flex flex-wrap md:flex-row flex-col justify-between items-center bg-[#f1f3f9] rounded-lg p-3'>
 
                         <div>
                             <h3 className='text-black text-md font-semibold'>Corporate experience</h3>
@@ -80,7 +80,7 @@ const ExperienceForm = () => {
                         value={designation}
                         className=' border-[1px] rounded-lg border-[#e1e6ef]'
                     />
-                    <div className='flex justify-between items-center'>
+                    <div className='flex flex-wrap md:flex justify-between items-center gap-2'>
                         <InputField
                             type="text"
                             id="industry"

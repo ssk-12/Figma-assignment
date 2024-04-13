@@ -94,9 +94,9 @@ const ProfileForm = () => {
                         label="Full Name"
                         onChange={handleFullNameChange}
                         value={fullName}
-                        className='border-[1px] rounded-lg border-[#e1e6ef]'
+                        className='border-[1px] max-w-sm md:w-full rounded-lg border-[#e1e6ef]'
                     />
-                    <div className='flex-1 md:flex justify-between items-center gap-2'>
+                    <div className='flex-1 flex-wrap md:flex justify-between items-center gap-2'>
                         {/* <InputField
                             type="text"
                             id="secondaryEmail"
@@ -166,7 +166,7 @@ const ProfileForm = () => {
                         />
 
                     </div>
-                    <div className='flex-1 md:flex justify-between items-center gap-2'>
+                    <div className='flex-1 flex-wrap md:flex justify-between items-center gap-2'>
                         <SelectField
                             options={locationOptions}
                             placeholder="Select your City"
@@ -215,7 +215,7 @@ const ProfileForm = () => {
                                 </svg>
 
                             }
-                            className='border-[2px] rounded-lg border-[#e1e6ef]'
+                            className='border-[2px] max-w-sm md:w-full rounded-lg border-[#e1e6ef]'
                             onIconClick={() => console.log("Icon clicked")}
                         />
 
