@@ -41,7 +41,7 @@ const Card: React.FC<CardProps> = ({ onGetStarted }) => {
                 </div>
             </div>
             <svg width="111" height="111" viewBox="0 0 111 111" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect opacity="0.01" x="0.0300293" y="0.5" width="110" height="110" fill="white" fill-opacity="0.01" />
+                    <rect opacity="0.01" x="0.0300293" y="0.5" width="110" height="110" fill="white" fillOpacity="0.01" />
                     <circle cx="5.43247" cy="97.0183" r="1.72227" fill="#F9A826" />
                     <rect x="29.0657" y="94.123" width="4.53051" height="4.53051" fill="#FF6584" />
                     <circle cx="29.0918" cy="97.1462" r="1.72227" fill="#F9A826" />
@@ -51,7 +51,7 @@ const Card: React.FC<CardProps> = ({ onGetStarted }) => {
                     <path d="M78.5856 33.3217L77.1061 29.7564L69.3824 38.7356L66.9478 44.6023L78.4974 33.2319L78.5856 33.3217Z" fill="#F9A826" />
                     <path d="M76.9567 29.5465L77.0519 29.6286L75.1072 24.9423L69.6917 37.9923L76.9567 29.5465Z" fill="#F9A826" />
                     <path d="M90.4093 61.8154L79.9498 36.611L63.7344 52.3479L59.8055 61.8154L44.5037 98.6887H75.1073H105.711L90.4093 61.8154Z" fill="#F9A826" />
-                    <path d="M1.0126 98.7133H109.308" stroke="#3F3D56" stroke-width="2" />
+                    <path d="M1.0126 98.7133H109.308" stroke="#3F3D56" strokeWidth="2" />
                     <path d="M81.5172 75.4048L70.8913 89.3002V94.8687L84.761 75.4048H81.5172Z" fill="#3F3D56" />
                     <path d="M76.9516 75.4048L70.8913 82.7189V88.886L81.2005 75.4048H76.9516Z" fill="#3F3D56" />
                     <path d="M76.6248 75.4048H70.8913V82.3244L76.6248 75.4048Z" fill="#3F3D56" />
@@ -64,7 +64,7 @@ const Card: React.FC<CardProps> = ({ onGetStarted }) => {
                     <circle cx="99.8364" cy="59.6768" r="3.39788" fill="white" />
                     <circle cx="99.8364" cy="59.6733" r="1.13263" fill="#3F3D56" />
                     <path d="M109.732 52.9452C110.535 49.3501 107.969 45.7173 104 44.8313C100.032 43.9452 96.1644 46.1413 95.3616 49.7365C94.5589 53.3316 97.1888 54.6576 101.157 55.5437C105.125 56.4297 108.929 56.5404 109.732 52.9452Z" fill="#F9A826" />
-                    <path d="M22.4659 60.8073V98.6874" stroke="#3F3D56" stroke-width="2" />
+                    <path d="M22.4659 60.8073V98.6874" stroke="#3F3D56" strokeWidth="2" />
                     <rect x="0.416817" y="46.2092" width="44.0466" height="29.1966" fill="#F9A826" />
                     <rect x="5.45057" y="53.5079" width="33.9788" height="1.00678" fill="#F1F1F1" />
                     <rect x="5.45057" y="56.9073" width="33.9788" height="1.00678" fill="#F1F1F1" />

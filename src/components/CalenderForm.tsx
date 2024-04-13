@@ -13,14 +13,19 @@ export const CalendarForm = () => {
         event.preventDefault();
         const token = localStorage.getItem('token');
 
+    
+        const userData = {
+            dateOfBirth: new Date(dateOfBirth).toISOString()
+        };
+
         try {
-            const response = await axios.post('https://be.ullegadda-ssk.workers.dev/api/v1/access/update-dob', { dateOfBirth }, {
+            const response = await axios.post('https://be.ullegadda-ssk.workers.dev/api/v1/access/update-dob', userData, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
             alert('Date of birth updated successfully!');
-            console.log(response)
+            console.log(response);
         } catch (error: any) {
             console.error('Error updating date of birth:', error);
             alert('Failed to update date of birth');
@@ -28,8 +33,8 @@ export const CalendarForm = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center flex-grow gap-2 overflow-x-hidden">
-            <div className="w-full min-w-[780px]">
+        <div className="flex flex-col items-center justify-center flex-grow gap-2 overflow-x-hidden flex-wrap">
+            <div className="w-full min-w-[780px] flex-wrap">
                 <form className="rounded px-6" onSubmit={handleUpdateDOB}>
                     <InputField
                         type="date"
@@ -37,9 +42,11 @@ export const CalendarForm = () => {
                         label="Date of Birth"
                         onChange={handleDateChange}
                         value={dateOfBirth}
-                        className='w-full'
+                        className=' border-[1px] rounded-lg border-[#e1e6ef]'
                     />
-                    <button type="submit" className="mt-4 py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">Update Date of Birth</button>
+                    <button type="submit" className="mt-4 py-[4px] px-4 bg-black text-white rounded hover:bg-slate-600 w-full">
+                        Update Date of Birth
+                    </button>
                 </form>
             </div>
         </div>

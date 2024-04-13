@@ -1,10 +1,16 @@
 import React from 'react';
 
+
+type Option = {
+  label: string;
+  value: string;
+};
+
 type SelectFieldProps = {
-  options: { label: string; value: string }[];
+  options: Option[];
   placeholder?: string;
   label?: string;
-  id?: string;  
+  id?: string;
   onChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
   value: string;
@@ -24,19 +30,19 @@ const SelectField: React.FC<SelectFieldProps> = ({
   onIconClick
 }) => {
   return (
-    <div className="relative mt-1">
+    <div className={`relative mt-1`}>
       {label && id && (
-        <label htmlFor={id} className="text-sm font-medium text-[#14213d]">
+        <label htmlFor={id} className="mb-1 block text-sm font-medium text-[#14213d]">
           {label}
         </label>
       )}
-      <div className="flex items-center relative">
+      <div className="relative flex items-center">
         <select
           id={id}
           onChange={onChange}
-          className={`flex-1 p-2 ${className}`}
+          className={`flex-1 p-2 text-gray-500 appearance-none  ${className}`}
           value={value}
-          style={{ paddingRight: icon ? '2.5rem' : undefined }}
+          style={{ paddingRight: icon ? '2.5rem' : '1rem' }} 
         >
           {placeholder && <option value="">{placeholder}</option>}
           {options.map((option) => (

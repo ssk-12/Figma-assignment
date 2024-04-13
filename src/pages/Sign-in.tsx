@@ -54,7 +54,7 @@ const SignIn: React.FC = () => {
                         type="email"
                         placeholder="Enter your email id"
                         onChange={e => setEmail(e.target.value)}
-                        className="border-2 rounded-md"
+                        className="border-2 rounded-md flex-row-reverse"
                         value={email}
                         icon={
                             <svg className={`h-5 w-5 ${emailValid ? 'text-green-500' : 'text-gray-500'}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

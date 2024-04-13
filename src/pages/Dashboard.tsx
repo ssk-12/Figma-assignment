@@ -46,7 +46,7 @@ export const Dashboard: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center flex-grow md:max-w-screen flex-wrap p-8 gap-2">
+        <div className="flex flex-col items-center justify-center flex-grow md:max-w-screen flex-wrap px-8 py-3 gap-2">
             <Card onGetStarted={() => setActiveIndex(0)} />
             {cards.map((card, index) => (
                 <Fillupcard
