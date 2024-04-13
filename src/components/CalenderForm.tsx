@@ -42,7 +42,7 @@ export const CalendarForm = () => {
                         label="Date of Birth"
                         onChange={handleDateChange}
                         value={dateOfBirth}
-                        className=' border-[1px] max-w-sm md:w-full rounded-lg border-[#e1e6ef]'
+                        className=' border-[1px] max-w-sm md:max-w-full rounded-lg border-[#e1e6ef]'
                     />
                     <button type="submit" className="mt-4 py-[4px] px-4 bg-black text-white rounded hover:bg-slate-600 w-full">
                         Update Date of Birth
