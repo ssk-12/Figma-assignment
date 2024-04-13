@@ -41,8 +41,8 @@ const ExperienceForm = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center flex-grow gap-2 overflow-x-hidden flex-wrap md:flex-nowrap">
-            <div className="w-full min-w-[780px] flex-wrap md:flex-nowrap">
+        <div className="flex flex-col items-center justify-center flex-grow gap-2  flex-wrap md:flex-nowrap max-w-sm md:max-w-full">
+            <div className="mx-w-sm md:w-full md:min-w-[780px] flex-wrap md:flex-nowrap">
                 <form className="rounded px-6" onSubmit={handleUpdateExperience}>
                     <div className='flex flex-wrap md:flex-row md:flex-nowrap flex-col justify-between items-center bg-[#f1f3f9] rounded-lg p-3 max-w-sm md:max-w-full'>
 

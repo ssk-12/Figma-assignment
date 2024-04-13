@@ -90,7 +90,7 @@ const ProfileForm = () => {
                         label="Full Name"
                         onChange={handleFullNameChange}
                         value={fullName}
-                        className='border-[1px] rounded-lg border-[#e1e6ef]'
+                        className='max-w-sm md:max-w-full border-[1px] rounded-lg border-[#e1e6ef]'
                     />
                     <div className='flex-1 md:flex justify-between items-center gap-2 flex-wrap'>
                         {/* <InputField
@@ -108,7 +108,7 @@ const ProfileForm = () => {
                             type="email"
                             placeholder="Enter your email id"
                             onChange={handleSecondaryEmailChange}
-                            className='w-80 border-[1px] rounded-lg border-[#e1e6ef]'
+                            className=' max-w-sm md:w-80 border-[1px] rounded-lg border-[#e1e6ef]'
                             value={secondaryEmail}
                             icon={
                                 <svg className={`h-5 w-5 ${emailValid ? 'text-green-500' : 'text-gray-500'}`} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -124,7 +124,7 @@ const ProfileForm = () => {
                             label="Phone Number"
                             onChange={handlePhoneNumberChange}
                             value={phoneNumber}
-                            className='w-80 border-[1px] rounded-lg border-[#e1e6ef]'
+                            className=' max-w-sm md:w-80 border-[1px] rounded-lg border-[#e1e6ef]'
                             icon={
                                 <svg
                                     width="24"
@@ -170,7 +170,7 @@ const ProfileForm = () => {
                             id="City"
                             onChange={handleLocationChange}
                             value={location}
-                            className='w-80 border-[2px] rounded-lg border-[#e1e6ef]'
+                            className=' max-w-sm md:w-80 border-[2px] rounded-lg border-[#e1e6ef]'
                             icon={
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -186,7 +186,7 @@ const ProfileForm = () => {
                             id="country"
                             onChange={handleCountryChange}
                             value={country}
-                            className='w-80 border-[2px] rounded-lg border-[#e1e6ef]'
+                            className='max-w-sm md:w-80 border-[2px] rounded-lg border-[#e1e6ef]'
                             icon={
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -211,11 +211,11 @@ const ProfileForm = () => {
                                 </svg>
 
                             }
-                            className='border-[2px] rounded-lg border-[#e1e6ef]'
+                            className=' max-w-sm md:max-w-full border-[2px] rounded-lg border-[#e1e6ef]'
                             onIconClick={() => console.log("Icon clicked")}
                         />
 
-                    <button type="submit" className="mt-4 py-[4px] px-4 bg-black text-white rounded hover:bg-slate-600 w-full">Update Profile</button>
+                    <button type="submit" className=" max-w-sm md:max-w-full mt-4 py-[4px] px-4 bg-black text-white rounded hover:bg-slate-600 w-full">Update Profile</button>
                     {message && (
                         <p className="mt-4 text-center text-lg">{message}</p>
                     )}

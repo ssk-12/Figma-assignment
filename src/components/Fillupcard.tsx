@@ -59,7 +59,7 @@ const Fillupcard: React.FC<FillupcardProps> = ({
                 <div>
                     {/* <ProfileForm /> */}
                     {formContent}
-                    <div className='flex justify-between items-center flex-wrap m-3'>
+                    <div className='flex justify-between items-center flex-wrap m-3 max-w-sm md:max-w-full'>
                         <div className='flex gap-1 justify-between items-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-9 text-gray-500">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />

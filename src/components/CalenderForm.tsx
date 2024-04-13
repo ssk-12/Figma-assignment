@@ -34,7 +34,7 @@ export const CalendarForm = () => {
 
     return (
         <div className="flex flex-col items-center justify-center flex-grow gap-2 overflow-x-hidden flex-wrap">
-            <div className="w-full min-w-[780px] flex-wrap">
+            <div className="w-full md:min-w-[780px] flex-wrap">
                 <form className="rounded px-6" onSubmit={handleUpdateDOB}>
                     <InputField
                         type="date"
