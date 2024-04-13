@@ -7,7 +7,6 @@ type InputFieldProps = {
   id?: string;  
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
-  MclassName?: string;
   value: string;
   icon?: JSX.Element;
   onIconClick?: () => void;
@@ -19,7 +18,6 @@ const InputField: React.FC<InputFieldProps> = ({
   label,
   id,
   onChange,
-  MclassName,
   className,
   value,
   icon,

@@ -4,10 +4,6 @@ import SelectField from '../components/SelectField'; // Import the SelectField c
 import axios from 'axios';
 
 
-const DownArrowIcon = () => (
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="0" fill="none" width="24" height="24"></rect> <g> <path d="M11 4v12.17l-5.59-5.59L4 12l8 8 8-8-1.41-1.41L13 16.17V4h-2z"></path> </g> </g></svg>
-);
-
 const ProfileForm = () => {
     const [fullName, setFullName] = useState('');
     const [secondaryEmail, setSecondaryEmail] = useState('');
