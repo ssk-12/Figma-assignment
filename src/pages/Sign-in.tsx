@@ -28,7 +28,7 @@ const SignIn: React.FC = () => {
             //if token is present allow user to visit dashboaed
             if (response.data.jwt) {
                 localStorage.setItem('token', response.data.jwt);
-                localStorage.setItem('username',response.data.username || " ")
+                localStorage.setItem('username', response.data.username || " ")
                 navigate("/onboard");
             } else if (response.data.error) {
                 alert('Sign-in failed: ' + response.data.error);
@@ -41,13 +41,13 @@ const SignIn: React.FC = () => {
     const emailValid = isValidEmail(email);
 
     return (
-        <div className="flex flex-col items-center justify-center flex-grow w-screen p-8 gap-2 overflow-x-hidden">
-            <div className="w-full max-w-96">
-            <div className='flex flex-col gap-1 justify-center items-center'>
+        <div className="flex flex-col items-center justify-center flex-grow w-screen p-4 md:p-8 gap-2 overflow-x-hidden">
+            <div className="w-full max-w-xs md:max-w-sm lg:max-w-96">
+                <div className='flex flex-col gap-1 justify-center items-center'>
                     <p className='text-indigo-950 font-medium text-xl'>Welcome</p>
-                    <p className='text-gray-500 font-sm text-md'>Sign In for Seamless Experiences!</p>
+                    <p className='text-gray-500 text-sm md:text-md'>Sign In for Seamless Experiences!</p>
                 </div>
-                <form onSubmit={handleSignIn} className="rounded px-6 ">
+                <form onSubmit={handleSignIn} className="rounded px-4 md:px-6">
                     <InputField
                         label='Email'
                         id='email'
@@ -63,7 +63,7 @@ const SignIn: React.FC = () => {
                             </svg>
                         }
                     />
-                    <div className="mb-6">
+                    <div className="mb-4">
                         <InputField
                             label='Password'
                             id='password'
@@ -73,7 +73,7 @@ const SignIn: React.FC = () => {
                             className="border-[1px] rounded-md"
                             value={password}
                             icon={
-                                
+
                                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" onClick={() => setShowPassword(!showPassword)}>
                                     {showPassword ? (
                                         <path d="M1 12C1 12 5 20 12 20C19 20 23 12 23 12C23 12 19 4 12 4C5 4 1 12 1 12ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="#6b7280" />
@@ -89,7 +89,7 @@ const SignIn: React.FC = () => {
                     </Button>
                 </form>
             </div>
-            <Link className='text-[#98a2b3] hover:text-slate-700' to="/reset">Forgot Password?</Link>
+            <Link className='text-[#98a2b3] hover:text-slate-700 text-xs md:text-sm' to="/reset">Forgot Password?</Link>
         </div>
     );
 };
